@@ -1,0 +1,237 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none; /* No background color needed since video is the background */
+    overflow: hidden; /* To hide scrollbars caused by the video */
+  }
+  
+  /* Background Video */
+  #background-video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%; 
+    min-height: 100%;
+    z-index: -1; /* Send video to the back */
+    object-fit: cover;
+    filter: brightness(0.7);
+  }
+  
+  /* Bio Container */
+  .bio-container {
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+    max-width: 800px;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    padding: 30px;
+    z-index: 1; /* Ensures the content is above the video */
+    animation: fadeIn 1.5s ease-in-out;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Profile Picture */
+  .profile-pic {
+    margin-right: 30px;
+  }
+  
+  .profile-pic-wrapper {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    transition: transform 0.5s ease;
+  }
+  
+  .profile-pic-wrapper:hover {
+    transform: scale(1.05) rotate(5deg);
+  }
+  
+  .profile-pic img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  
+  .profile-pic-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .profile-pic-overlay i {
+    color: white;
+    font-size: 2rem;
+  }
+  
+  .profile-pic-wrapper:hover .profile-pic-overlay {
+    opacity: 1;
+  }
+  
+  /* Bio Content */
+  .bio-content {
+    flex: 1;
+    color: white;
+  }
+  
+  .bio-name {
+    font-size: 2.5rem;
+    margin: 0;
+    opacity: 0;
+    animation: slideIn 1s forwards 1s;
+    background: linear-gradient(45deg, #fff, #00ffcc);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 10px rgba(0, 255, 204, 0.3);
+  }
+  
+  .bio-description {
+    margin: 15px 0;
+    opacity: 0;
+    animation: slideIn 1s forwards 1.5s;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+  }
+  
+  /* Social Links */
+  .social-links {
+    margin-top: 25px;
+    display: flex;
+    gap: 20px;
+    opacity: 0;
+    animation: slideIn 1s forwards 2s;
+  }
+  
+  .social-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+  }
+  
+  .social-link:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .social-link i {
+    font-size: 1.2rem;
+  }
+  
+  .social-link span {
+    font-size: 1rem;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slideIn {
+    0% {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .bio-container {
+      flex-direction: column;
+      text-align: center;
+      padding: 20px;
+    }
+    
+    .profile-pic {
+      margin-right: 0;
+      margin-bottom: 20px;
+    }
+    
+    .social-links {
+      justify-content: center;
+    }
+  }
+
+  .discord-link {
+    background: rgba(114, 137, 218, 0.1) !important;
+  }
+
+  .discord-link:hover {
+    background: rgba(114, 137, 218, 0.2) !important;
+  }
+
+  /* Quote Animation */
+  h2 {
+    font-size: 2.5rem;
+    margin: 0;
+    opacity: 0;
+    animation: slideIn 1s forwards 1.5s;
+    background: linear-gradient(45deg, #fff, #00ffcc);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 10px rgba(0, 255, 204, 0.3);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    z-index: 2;
+    text-align: center;
+  }
+
+  @keyframes quoteAnimation {
+    0% {
+      transform: scale(1);
+      opacity: 0.8;
+    }
+    50% {
+      transform: scale(1.05);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 0.8;
+    }
+  }

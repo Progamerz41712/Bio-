@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animated Bio with Background Video</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <!-- Video Background -->
+  <video autoplay muted loop id="background-video">
+    <source src="lofi.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- Audio Background -->
+  <audio id="background-audio" autoplay loop>
+    <source src="song.mp3" type="audio/mpeg">
+    Your browser does not support the audio tag.
+  </audio>
+
+  <!-- Bio Container -->
+  <div class="bio-container">
+    <div class="profile-pic">
+      <div class="profile-pic-wrapper">
+        <img src="pfp.png" alt="Profile Picture">
+        <div class="profile-pic-overlay">
+          <i class="fas fa-user"></i>
+        </div>
+      </div>
+    </div>
+    <div class="bio-content">
+      <h1 class="bio-name">Ritesh</h1>
+      <p class="bio-description">Hi! Me is Ritesh here. Normal boy who loves gaming.</p>
+      <p class="bio-description">"Make your every downfall as your greatest Arise"</p>
+      
+      <!-- Social Media Links -->
+      <div class="social-links">
+        <a href="https://discord.com/users/ft.progamerz" class="social-link discord-link" target="_blank">
+          <i class="fab fa-discord"></i>
+          <span>ft.progamerz</span>
+        </a>
+        <a href="https://instagram.com/itz_ritesh_99
+        " class="social-link" target="_blank">
+          <i class="fab fa-instagram"></i>
+          <span>itz_ritesh_99</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Function to play audio
+    function playAudio() {
+      const audio = document.getElementById('background-audio');
+      audio.volume = 0.5; // Set volume to 50%
+      
+      // Try to play the audio
+      const playPromise = audio.play();
+      
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          console.log("Audio started playing successfully");
+        }).catch(error => {
+          console.log("Audio autoplay failed:", error);
+          // Try to play on user interaction
+          document.addEventListener('click', function startAudio() {
+            audio.play();
+            document.removeEventListener('click', startAudio);
+          }, { once: true });
+        });
+      }
+    }
+
+    // Try to play audio when the page loads
+    window.addEventListener('load', playAudio);
+    
+    // Also try to play when the user interacts with the page
+    document.addEventListener('click', playAudio, { once: true });
+    document.addEventListener('touchstart', playAudio, { once: true });
+    document.addEventListener('keydown', playAudio, { once: true });
+  </script>
+</body>
+</html>
